@@ -6,7 +6,7 @@ import css from './bookList.module.css';
 
 export const BookList = () => {
   const queryClient = useQueryClient();
-  const { mutate } = useMutation({
+  const { mutate: deleteBookMutation } = useMutation({
     mutationFn: deleteBook,
     onSuccess() {
       queryClient.invalidateQueries({ queryKey: ['books'] });
@@ -23,7 +23,7 @@ export const BookList = () => {
     retry: 1,
   });
   const onDeleteBook = (id: bookType['id']) => {
-    mutate(id);
+    deleteBookMutation(id);
   };
   return (
     <>
@@ -31,7 +31,7 @@ export const BookList = () => {
       {isError && <h2>Something went wrong, try later...</h2>}
       {!isLoading && books && books.length > 0 && (
         <ul className={css.container}>
-          {books?.map(book => (
+          {books.map(book => (
             <li key={book.id} className={css.card}>
               <BookCard book={book} />
               <button onClick={() => onDeleteBook(book.id)}>delete</button>
