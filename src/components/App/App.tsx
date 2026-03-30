@@ -29,7 +29,7 @@ export const App = () => {
       {isLoading && <h2>Loading...</h2>}
       {isError && <h2>Something went wrong, try later...</h2>}
       {!isLoading && books && books.length > 0 && (
-        <BookList books={books} ondeleteBook={onDeleteBook} />
+        <BookList books={books} onDeleteBook={onDeleteBook} />
       )}
     </>
   );
