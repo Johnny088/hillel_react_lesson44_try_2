@@ -3,7 +3,6 @@ import type { BookType } from '../../types/bookType';
 import { deleteBook } from '../../services/bookService';
 interface Props {
   book: BookType;
-  // onDeleteBook: (id: BookType['id']) => void;
 }
 export const BookCard = ({ book }: Props) => {
   const queryClient = useQueryClient();
